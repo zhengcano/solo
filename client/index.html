@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html ng-app='shortly'>
+  <head>
+    <meta charset="utf-8" />
+    <title>Shortly</title>
+    <link href='http://fonts.googleapis.com/css?family=Lato:300,400' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="styles/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div ui-view></div>
+    </div><!-- /.container -->
+
+    <script src="lib/angular/angular.js"></script>
+    <script src="lib/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="lib/angular-animate/angular-animate.min.js"></script>
+    <!-- <script src="lib/ngFx/dist/ngFx.js"></script> -->
+
+
+    <script src="app/auth/auth.js"></script>
+    <script src="app/links/links.js"></script>
+    <script src="app/shorten/shorten.js"></script>
+    <script src="app/services/services.js"></script>
+    <script src="app/app.js"></script>
+    <script src="app/directives.js"></script>
+  </body>
+</html>

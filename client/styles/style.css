@@ -1,0 +1,249 @@
+body {
+  margin: 0;
+  font-weight: 300;
+  font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  background: #DFDFD5;
+}
+
+a {
+  color: #37BAA8;
+  text-decoration: none;
+}
+
+h1 {
+  font-weight: 300;
+  font-size: 2.5em;
+  margin: 0.5em 0;
+}
+
+h2 {
+  margin: 0;
+}
+
+ul {
+  list-style: none;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.container {
+  width: 80%;
+  max-width: 850px;
+  margin: 0 auto;
+}
+
+.box {
+  width: 400px;
+  padding: 2em;
+  margin: 4em auto;
+  background: #fff;
+  box-shadow: 1px 1px 6px #b1b1b1;
+  border-radius: 10px;
+}
+
+.navigation {
+  width: 100%;
+  background: #37BAA8;
+  border-radius: 4px;
+}
+
+.nav-list {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  list-style: none;
+}
+
+.nav-list-item {
+  float: left;
+}
+
+.nav-list-item:first-child a {
+  border-radius: 4px 0 0 4px;
+}
+.nav-list-item:last-child a {
+  border-radius: 0 4px 4px 0;
+}
+
+.pull-right {
+  float: right;
+}
+
+.search-bar {
+  background: #E8E8DC;
+  padding: 1em;
+  width: 100%;
+  overflow: auto;
+  box-sizing: border-box;
+}
+
+.search-box {
+  font-size: 0.8em;
+  width: auto;
+  padding: 0.2em;
+}
+
+.search-label, .search-box {
+  float: left;
+}
+
+.nav-link, .search-label {
+  color: #fff;
+  line-height: 20px;
+  font-weight: 400;
+  display: block;
+  text-shadow: -1px -1px 2px #329486;
+}
+
+.nav-link {
+  text-align: center;
+  padding: 1.2em 1em;
+  width: 100px;
+}
+
+.nav-link:hover, .selected:hover {
+  background: #7DE8DA;
+}
+
+.selected {
+  background: #5AD5C4;
+}
+
+.link-list {
+  margin: 0;
+  padding: 0;
+}
+
+.link-item {
+  cursor: pointer;
+  overflow: hidden;
+  padding: 1em;
+  overflow: auto;
+  clear: both;
+}
+
+.link-item:hover, .link-item:nth-of-type(even):hover {
+  background: #FFFFF5;
+}
+
+.link-item:nth-of-type(even) {
+  background: #E8E8DC;
+}
+
+.link-img {
+  float: left;
+  font-size: 2em;
+  color: #37BAA8;
+  margin: 0.5em 0.8em 0 0;
+}
+
+.info {
+  float: left;
+  width: 80%;
+}
+
+.visits {
+  text-align: center;
+  float: right;
+  margin-right: 10px;
+  margin-left: 20px;
+}
+
+.count {
+  font-size: 3em;
+  margin: 0;
+}
+
+.count-label {
+  font-size: 0.8em;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.title {
+  font-weight: 400;
+}
+
+.original {
+  color: #aaa;
+}
+
+form:not(.search-bar) {
+  padding: 1em 0;
+  float: left;
+}
+
+input, button {
+  font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  display: inline-block;
+  font-size: 1em;
+  margin: 1em 0;
+  border-radius: 4px;
+}
+
+input, #password {
+  width: 360px;
+  padding: 0.5em;
+  margin: 0 0.5em 0 0;
+  border: 1px solid #C8C8C8;
+}
+
+button {
+  border: 0;
+  color: #fff;
+  cursor: pointer;
+  font-weight: 300;
+  padding: 0.5em 1em;
+  background: #37BAA8;
+  text-shadow: -1px -1px 2px #329486;
+}
+
+button:disabled {
+  background: #C8C8C8;
+  color: #eee;
+  text-shadow: none;
+}
+
+input[type="submit"]:hover {
+  opacity: 0.8;
+}
+
+label {
+  line-height: 2em;
+  margin: 0 1em 0 0;
+}
+
+.row {
+  margin: 1em 0;
+}
+
+.error {
+  background-color: #fee;
+  color: #a33;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.spinner {
+  display: none;
+  float: left;
+  margin: 1.8em 0 0 1em;
+}
+
+.message {
+  clear: both;
+}
+
+input:focus {
+  outline: 0;
+}
+
+input.ng-invalid.ng-dirty {
+  border: 2px solid #E77272;
+}
+
+input.ng-valid.ng-dirty {
+  border: 2px solid #37BAA8;
+}

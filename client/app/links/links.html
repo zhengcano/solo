@@ -1,0 +1,17 @@
+<h1>Shortly</h1>
+<div class="navigation">
+  <ul class="nav-list">
+    <li class="nav-list-item"><a ui-sref="links" class="nav-link index">All Links</a></li>
+    <li class="nav-list-item"><a ui-sref="shorten" class="nav-link create">Shorten</a></li>
+    <li class="nav-list-item pull-right"><a href="/logout" class="nav-link">Log Out</a></li>
+    <li class="nav-list-item pull-right">
+      <form>
+        <label class="search-label">Search Links:</label>
+        <input class="search-box" type="text" name="search" ng-model="searchLinks" />
+      </form>
+    </li>
+  </ul>
+</div><!-- /.navigation -->
+<ul class="link-list">
+  <shortened-link links="links"></shortened-link>
+</ul>

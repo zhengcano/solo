@@ -18,21 +18,31 @@ Once the project moves into development, the press release can be used as a touc
  
 ## Heading ##
   > Name the product in a way the reader (i.e. your target customers) will understand.
+  My Sound thing (for now)
 
 ## Sub-Heading ##
   > Describe who the market for the product is and what benefit they get. One sentence only underneath the title.
+  For freelance and aspiring professional musicians
 
 ## Summary ##
   > Give a summary of the product and the benefit. Assume the reader will not read anything else so make this paragraph good.
+	This app allows you to record a short snippet of audio. You can also view other musicians' snippets, add your own track to it,
+	and share it with others to build an online community of like-minded musicians.
 
 ## Problem ##
   > Describe the problem your product solves.
+  It is relatively easy for people to get acquainted with local scenes of music. While these local scenes are great, there are
+  many opportunities and collaborations for musicians that could happen online, regardless of location. It is difficult for
+  these musicians to easily interact unless they have carved out an online reputation or repotoire. 
 
 ## Solution ##
   > Describe how your product elegantly solves the problem.
+  By allowing people to submit short tracks of music and add their own twist to others' snippets, this app allows people to
+  connect easily on a musical level with others online.
 
 ## Quote from You ##
   > A quote from a spokesperson in your company.
+  Is this really necessary right now?
 
 ## How to Get Started ##
   > Describe how easy it is to get started.

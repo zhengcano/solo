@@ -1,0 +1,17 @@
+<div class="box" id="signin">
+  <h2>Login to Shortly</h2>
+  <form name="signinForm" ng-submit="signin()">
+    <div class="row">
+      <label for="username">Username:</label>
+      <input id="username" type="text" name="username" ng-model="user.username">
+    </div>
+    <div class="row">
+      <label for="password">Password:</label>
+      <input id="password" type="password" name="password" ng-model="user.password">
+    </div>
+    <button ng-disabled="signinForm.$invalid || signinForm.$pristine || !user.username.length || !user.password.length">Login</button>
+  </form>
+  <p>
+    <a ui-sref="signup">Create your free account today! &rarr;</a>
+  <p>
+</div>
