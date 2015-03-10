@@ -1,8 +1,8 @@
-angular.module('shortly.songs', [])
+angular.module('soundwich.songs', [])
 
 .controller('SongsController',['$scope', 'Songs', function ($scope, Songs) {
 	var findSongs = function(){
-		Songs.findSongs().then(function(){
+		Songs.findAll().then(function(){
 			$scope.songs = Songs.getSongs();
 		});
 	};

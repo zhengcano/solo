@@ -1,6 +1,6 @@
 (function(angular){
 
-  angular.module('shortly')
+  angular.module('soundwich')
     .directive('shortenedLink', function(Songs){
       return {
         restrict: 'E',

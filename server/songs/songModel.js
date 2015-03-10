@@ -4,13 +4,9 @@ var SongSchema = new mongoose.Schema({
 
   title: String,
   length: String,
-  user: String
+  user: String,
+  layers: Array
 
-});
-
-SongSchema.pre('save', function(next){
-
-  next();
 });
 
 module.exports = mongoose.model('Song', SongSchema);

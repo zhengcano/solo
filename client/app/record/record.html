@@ -1,8 +1,10 @@
 <h1>Soundwich</h1>
 <div class="navigation">
   <ul class="nav-list">
-    <li class="nav-list-item"><a ui-sref="songs" class="nav-link index">All Snippets</a></li>
-    <li class="nav-list-item"><a ui-sref="record" class="nav-link create">New Snippet</a></li>
+    <li class="nav-list-item"><a ui-sref="songs" class="nav-link index">All Tracks</a></li>
+    <li class="nav-list-item"><a ui-sref="record" class="nav-link create">New Track</a></li>
+    <li class="nav-list-item"><a ui-sref="layers" class="nav-link create">Track Layers</a></li>
+    <li class="nav-list-item"><a ui-sref="mysongs" class="nav-link create">My Tracks</a></li>
     <li class="nav-list-item pull-right"><a href="#" ng-click="logout()" class="nav-link">Log Out</a></li>
   </ul>
 </div><!-- /.navigation -->
@@ -10,5 +12,5 @@
     <input class="text" type="text" name="title" ng-model="title">
     <button type="submit" ng-disabled="newSong.$invalid || newSong.$pristine || !title.length">Record</button>
 </form>
-<audio src=""></audio>
+
 <div class="timer" ng-show"counter">{{counter}}</div>

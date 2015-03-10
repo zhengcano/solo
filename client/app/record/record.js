@@ -1,4 +1,4 @@
-angular.module('shortly.record', [])
+angular.module('soundwich.record', [])
 
 .controller('RecordController', function ($scope, $location, Songs) {
   $scope.ended = false;

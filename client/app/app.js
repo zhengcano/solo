@@ -1,8 +1,10 @@
-angular.module('shortly', [
-  'shortly.services',
-  'shortly.songs',
-  'shortly.record',
-  'shortly.auth',
+angular.module('soundwich', [
+  'soundwich.services',
+  'soundwich.songs',
+  'soundwich.record',
+  'soundwich.auth',
+  'soundwich.mysongs',
+  'soundwich.layers',
   'ui.router'
 ])
 .config(function($stateProvider, $httpProvider) {
@@ -19,17 +21,28 @@ angular.module('shortly', [
       controller: 'AuthController',
       authenticate: false
     })
-    // Your code here
     .state('record', {
       url: '/record',
       templateUrl: 'app/record/record.html',
       controller: 'RecordController',
       authenticate: true
     })
+    .state('mysongs', {
+      url: '/mysongs',
+      templateUrl: 'app/songs/songs.html',
+      controller: 'MySongsController',
+      authenticate: true
+    })
     .state('songs', {
       url: '/songs',
       templateUrl: 'app/songs/songs.html',
       controller: 'SongsController',
+      authenticate: true
+    })
+    .state('layers', {
+      url: '/layers',
+      templateUrl: 'app/layers/layers.html',
+      controller: 'LayersController',
       authenticate: true
     })
     // We add our $httpInterceptor into the array
@@ -46,7 +59,7 @@ angular.module('shortly', [
   // then add it to the header so the server can validate the request
   var attach = {
     request: function (object) {
-      var jwt = $window.localStorage.getItem('com.shortly');
+      var jwt = $window.localStorage.getItem('com.soundwich');
       if (jwt) {
         object.headers['x-access-token'] = jwt;
       }

@@ -1,13 +1,15 @@
 <h1>Soundwich</h1>
 <div class="navigation">
   <ul class="nav-list">
-    <li class="nav-list-item"><a ui-sref="songs" class="nav-link index">All Snippets</a></li>
-    <li class="nav-list-item"><a ui-sref="record" class="nav-link create">New Snippet</a></li>
+    <li class="nav-list-item"><a ui-sref="songs" class="nav-link index">All Tracks</a></li>
+    <li class="nav-list-item"><a ui-sref="record" class="nav-link create">New Track</a></li>
+    <li class="nav-list-item"><a ui-sref="layers" class="nav-link create">Track Layers</a></li>
+    <li class="nav-list-item"><a ui-sref="mysongs" class="nav-link create">My Tracks</a></li>
     <li class="nav-list-item pull-right"><a href="#" ng-click="logout()" class="nav-link">Log Out</a></li>
     <li class="nav-list-item pull-right">
       <form>
-        <label class="search-label">Search Snippets:</label>
-        <input class="search-box" type="text" name="search" ng-model="searchLinks" />
+        <label class="search-label">Search Tracks:</label>
+        <input class="search-box" type="text" name="search" ng-model="searchSongs" />
       </form>
     </li>
   </ul>
