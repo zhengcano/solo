@@ -2,11 +2,6 @@
   <div class="link-img fa fa-star"></div>
   <div class="info">
     <h2 class="title">{{song.title}}</h2>
-    <div class="original">{{song.url}}</div>
-    <a href="{{song.base_url}}/api/songs/{{song.code}}">{{song.base_url}}/api/songs/{{song.code}}</a>
-  </div>
-  <div class="visits">
-    <p class="count">{{song.visits}}</p>
-    <p class="count-label">Visits</p>
+    <div class="original"><audio controls="controls" ng-src="{{song.location}}"></audio></div>
   </div>
 </li>

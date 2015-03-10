@@ -2,9 +2,21 @@ var Song    = require('./songModel.js'),
     User    = require('../users/userModel.js'),
     Q       = require('q'),
     util    = require('../config/utils.js'),
-    jwt     = require('jwt-simple');
+    jwt     = require('jwt-simple'),
+    fs      = require('fs');
 
 module.exports = {
+  saveSong: function(req, res, next) {
+    var buf = new Buffer(req.body.blob, 'base64'); // decode
+    fs.writeFile("client/audio/" + req.body.title + ".wav", buf, function(err) {
+      if(err) {
+        console.log("err", err);
+      } else {
+        return res.json({'status': 'success'});
+      }
+    }) 
+  },
+
   findSong: function (req, res, next, code) {
     var findLink = Q.nbind(Song.findOne, Song);
     findLink({code: code})
@@ -28,15 +40,15 @@ module.exports = {
     var findUser = Q.nbind(User.findOne, User);
     findUser({username: user.username})
       .then(function (foundUser) {
-        // var findAll = Q.nbind(Song.find, Song);
+        var findAll = Q.nbind(Song.find, Song);
 
-        // findAll({'url':{$in: foundUser.userlinks}})
-        //   .then(function (links) {
-        //     res.json(links);
-        //   })
-        //   .fail(function (error) {
-        //     next(error);
-        //   });
+        findAll({'title':{$in: foundUser.usersongs}})
+          .then(function (songs) {
+            res.json(songs);
+          })
+          .fail(function (error) {
+            next(error);
+          });
       })
       .fail(function (error) {
         next(error);
@@ -51,6 +63,16 @@ module.exports = {
     findUser({username: user.username})
       .then(function (foundUser) {
         if (foundUser) {
+          var user = foundUser.username;
+          var title = req.body.title;
+          var song = new Song;
+          foundUser.usersongs.push(title)
+          foundUser.save();
+          song.user = user;
+          song.title = title;
+          console.log(song)
+          song.save();
+          res.redirect('/#/songs');
 
           // var url = req.body.url;
           // console.log(req.body);

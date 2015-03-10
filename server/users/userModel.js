@@ -16,7 +16,7 @@ var UserSchema = new mongoose.Schema({
     required: true
   },
 
-  userlinks: {
+  usersongs: {
     type: Array
   },
 

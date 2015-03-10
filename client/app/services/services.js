@@ -2,6 +2,22 @@ angular.module('shortly.services', [])
 
 .factory('Songs', function ($http) {
   var songs = {};
+  var ended = false;
+  var user;
+
+  var getUser = function(){
+    return $http({
+      method: 'GET',
+      url: '/api/users/getuser'
+    })
+    .then(function(resp){
+      user = resp.data.username;
+    })
+  };
+
+  var returnUser = function(){
+    return user;
+  }
 
   var findSongs = function() {
     return $http({
@@ -11,6 +27,7 @@ angular.module('shortly.services', [])
     .then(function(resp){
       resp.data.forEach(function(song){
         songs[song.title] = song;
+        songs[song.title].location = "audio/"+song.user+"_"+song.title+".wav"
       });
     });
   };
@@ -25,6 +42,20 @@ angular.module('shortly.services', [])
     return songList;
   };
 
+  var saveSong = function(song, title){
+    blobToBase64(song, function(base64){ // encode
+      var update = {'blob': base64, 'title': title};
+      console.log(update);
+      $http({
+        method: 'POST',
+        url: '/api/songs/savesong',
+        data: update})
+        .then(function(new_recording) {
+          console.log(new_recording);
+        })
+    });   
+  };
+
   var getTitles = function(){
     var titleList = [];
     angular.forEach(songs, function(song){
@@ -32,28 +63,18 @@ angular.module('shortly.services', [])
     });
 
     return titleList;
-  }
+  };
 
-  var saveSong = function(song, title){
-    var blobToBase64 = function(blob, cb) {
-      var reader = new FileReader();
-      reader.onload = function() {
-        var dataUrl = reader.result;
-        var base64 = dataUrl.split(',')[1];
-        cb(base64);
-      };
-      reader.readAsDataURL(blob);
+  var blobToBase64 = function(blob, cb) {
+    var reader = new FileReader();
+    reader.onload = function() {
+      var dataUrl = reader.result;
+      var base64 = dataUrl.split(',')[1];
+      cb(base64);
     };
+    reader.readAsDataURL(blob);
+  };
 
-    blobToBase64(song, function(base64){ // encode
-      var update = {'blob': base64, 'title': title};
-      $http.post('/api/songs/save', update)
-        .success(function(new_recording) {
-          console.log("success");
-        }
-      })
-    })  
-  }
 
   var saveData = function(data){
     
@@ -67,11 +88,43 @@ angular.module('shortly.services', [])
     });
   };
 
+  var recordSong = function(title){
+    window.AudioContext = window.AudioContext || window.webkitAudioContext;
+    navigator.getUserMedia = ( navigator.getUserMedia ||
+                         navigator.webkitGetUserMedia ||
+                         navigator.mozGetUserMedia ||
+                         navigator.msGetUserMedia);
+
+    var audioContext = new AudioContext();
+    navigator.getUserMedia({audio: true}, function success(stream){
+      var input = audioContext.createMediaStreamSource(stream);
+
+      var rec = new Recorder(input);
+      rec.record();
+      setTimeout(function(){
+        if (!ended){
+          rec.stop();
+          rec.exportWAV(function(blob){
+            // Recorder.forceDownload(blob);
+            saveSong(blob, title);
+          });         
+        }
+      }, 10000);
+
+    }, function(err){});
+
+  }
+
 
   return {
     findSongs: findSongs,
     getSongs: getSongs,
-    saveUrl: saveUrl
+    saveSong: saveSong,
+    getTitles: getTitles,
+    saveData: saveData,
+    recordSong: recordSong,
+    getUser: getUser,
+    returnUser: returnUser
   };
 
 })

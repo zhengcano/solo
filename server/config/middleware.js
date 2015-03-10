@@ -9,6 +9,7 @@ module.exports = function (app, express) {
   var songRouter = express.Router();
 
   app.use(morgan('dev'));
+  app.use(bodyParser({limit: '50mb'}));
   app.use(bodyParser.urlencoded({extended: true}));
   app.use(bodyParser.json());
   app.use(express.static(__dirname + '/../../client'));

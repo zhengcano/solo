@@ -13,6 +13,8 @@ module.exports = function (app) {
     .get(songsController.allSongs)
     .post(songsController.newSong);
 
+  app.route('/savesong')
+    .post(songsController.saveSong);
   // app.get('/:code', songsController.navToLink);
 
 };
