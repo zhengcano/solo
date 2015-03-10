@@ -72,51 +72,7 @@ module.exports = {
           song.title = title;
           console.log(song)
           song.save();
-          res.redirect('/#/songs');
-
-          // var url = req.body.url;
-          // console.log(req.body);
-          // if (!util.isValidUrl(url)) {
-          //   return next(new Error('Not a valid url'));
-          // }
-
-          // var createLink = Q.nbind(Song.create, Song);
-          // var findLink = Q.nbind(Song.findOne, Song);
-
-          // findLink({url: url})
-          //   .then(function (match) {
-          //     if (match) {
-          //       foundUser.userlinks.push(match.url);
-          //       foundUser.save();
-          //       res.send(match);
-          //     } else {
-          //       return  util.getUrlTitle(url);
-          //     }
-          //   })
-          //   .then(function (title) {
-          //     if (title) {
-          //       var newLink = {
-          //         url: url,
-          //         visits: 0,
-          //         base_url: req.headers.origin,
-          //         title: title
-          //       };
-          //       return createLink(newLink);
-          //     }
-          //   })
-          //   .then(function (createdLink) {
-          //     if (createdLink) {
-          //       foundUser.userlinks.push(createdLink.url);
-          //       foundUser.save();
-          //       res.json(createdLink);
-          //     }
-          //   })
-          //   .fail(function (error) {
-          //     next(error);
-          //   });
-
-
-
+          res.send(201);
         }
       })
       .fail(function (error) {

@@ -1,6 +1,6 @@
 angular.module('shortly.services', [])
 
-.factory('Songs', function ($http) {
+.factory('Songs', function ($http, $location) {
   var songs = {};
   var ended = false;
   var user;
@@ -45,13 +45,12 @@ angular.module('shortly.services', [])
   var saveSong = function(song, title){
     blobToBase64(song, function(base64){ // encode
       var update = {'blob': base64, 'title': title};
-      console.log(update);
       $http({
         method: 'POST',
         url: '/api/songs/savesong',
         data: update})
         .then(function(new_recording) {
-          console.log(new_recording);
+          $location.path('/songs');
         })
     });   
   };
@@ -105,7 +104,6 @@ angular.module('shortly.services', [])
         if (!ended){
           rec.stop();
           rec.exportWAV(function(blob){
-            // Recorder.forceDownload(blob);
             saveSong(blob, title);
           });         
         }
