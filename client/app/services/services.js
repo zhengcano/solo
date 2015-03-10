@@ -1,9 +1,14 @@
 angular.module('shortly.services', [])
 
-.factory('Songs', function ($http, $location) {
+.factory('Songs', function ($http, $location, $window) {
   var songs = {};
   var ended = false;
   var user;
+
+  var logout = function(){
+    $window.localStorage.removeItem('com.soundwich', '');
+    $location.path('/signin');
+  };
 
   var getUser = function(){
     return $http({
@@ -122,7 +127,8 @@ angular.module('shortly.services', [])
     saveData: saveData,
     recordSong: recordSong,
     getUser: getUser,
-    returnUser: returnUser
+    returnUser: returnUser,
+    logout: logout
   };
 
 })
@@ -158,19 +164,13 @@ angular.module('shortly.services', [])
   };
 
   var isAuth = function () {
-    return !!$window.localStorage.getItem('com.shortly');
-  };
-
-  var signout = function () {
-    $window.localStorage.removeItem('com.shortly');
-    $location.path('/signin');
+    return !!$window.localStorage.getItem('com.soundwich');
   };
 
 
   return {
     signin: signin,
     signup: signup,
-    isAuth: isAuth,
-    signout: signout
+    isAuth: isAuth
   };
 });

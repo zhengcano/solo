@@ -8,4 +8,8 @@ angular.module('shortly.songs', [])
 	};
 	findSongs();
 
+	$scope.logout = function(){
+		Songs.logout();
+	};
+
 }]);

@@ -110,9 +110,11 @@ module.exports = {
           next(error);
         });
     }
+  },
+
+  logOut: function(req, res, next) {
+    var token = req.headers['x-access-token'];
+    delete token;
+    res.send(200);
   }
-
-  // logout: function(req, res, next) {
-
-  // }
 };

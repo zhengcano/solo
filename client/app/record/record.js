@@ -2,7 +2,6 @@ angular.module('shortly.record', [])
 
 .controller('RecordController', function ($scope, $location, Songs) {
   $scope.ended = false;
-	$scope.counter = 10;
   $scope.userTitles = [];
 
 	var getUser = function(){
@@ -34,6 +33,10 @@ angular.module('shortly.record', [])
       info.title = $scope.title;
       Songs.saveData(info); 
     }
+  };
+
+  $scope.logout = function(){
+    Songs.logout();
   };
 
 
