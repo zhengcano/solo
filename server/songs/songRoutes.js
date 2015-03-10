@@ -1,4 +1,4 @@
-var linksController = require('./linkController.js');
+var songsController = require('./songController.js');
 
 module.exports = function (app) {
   // app === linkRouter injected from middleware.js
@@ -7,12 +7,12 @@ module.exports = function (app) {
   // like line 16 below. That code will actually be the shortened url
   // so the real URL will be pre fetched from mongo and attached to
   // req.navLink before it reaches line 16.
-  app.param('code', linksController.findUrl);
+  // app.param('code', songsController.findUrl);
 
   app.route('/')
-    .get(linksController.allLinks)
-    .post(linksController.newLink);
+    .get(songsController.allSongs)
+    .post(songsController.newSong);
 
-  app.get('/:code', linksController.navToLink);
+  // app.get('/:code', songsController.navToLink);
 
 };

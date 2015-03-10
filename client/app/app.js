@@ -1,7 +1,7 @@
 angular.module('shortly', [
   'shortly.services',
-  'shortly.links',
-  'shortly.shorten',
+  'shortly.songs',
+  'shortly.record',
   'shortly.auth',
   'ui.router'
 ])
@@ -20,16 +20,16 @@ angular.module('shortly', [
       authenticate: false
     })
     // Your code here
-    .state('shorten', {
-      url: '/shorten',
-      templateUrl: 'app/shorten/shorten.html',
-      controller: 'ShortenController',
+    .state('record', {
+      url: '/record',
+      templateUrl: 'app/record/record.html',
+      controller: 'RecordController',
       authenticate: true
     })
-    .state('links', {
-      url: '/links',
-      templateUrl: 'app/links/links.html',
-      controller: 'LinksController',
+    .state('songs', {
+      url: '/songs',
+      templateUrl: 'app/songs/songs.html',
+      controller: 'SongsController',
       authenticate: true
     })
     // We add our $httpInterceptor into the array
@@ -37,7 +37,7 @@ angular.module('shortly', [
     $httpProvider.interceptors.push('AttachTokens');
 })
 .config(function($urlRouterProvider){
-  $urlRouterProvider.otherwise('/links');
+  $urlRouterProvider.otherwise('/songs');
 })
 .factory('AttachTokens', function ($window) {
   // this is an $httpInterceptor
@@ -66,7 +66,7 @@ angular.module('shortly', [
   // if it's not valid, we then redirect back to signin/signup
   $rootScope.$on('$stateChangeStart', function (evt, toState, current) {
     if ( !toState.authenticate && Auth.isAuth()) {
-      $location.path('/links');
+      $location.path('/songs');
     } else if (toState.authenticate && !Auth.isAuth()) {
       $location.path('/signin');
     }

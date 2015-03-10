@@ -9,6 +9,7 @@ pids
 *.pid
 *.seed
 
+audio/
 node_modules/
 server/server.js
 

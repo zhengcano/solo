@@ -1,0 +1,18 @@
+<h1>Shortly</h1>
+<div class="navigation">
+  <ul class="nav-list">
+    <li class="nav-list-item"><a ui-sref="songs" class="nav-link index">All Snippets</a></li>
+    <li class="nav-list-item"><a ui-sref="record" class="nav-link create">New Snippet</a></li>
+    <li class="nav-list-item pull-right"><a href="/logout" class="nav-link">Log Out</a></li>
+  </ul>
+</div><!-- /.navigation -->
+<form ng-submit="newsong(song.title)" novalidate class="newlink-form" name="newSong">
+    <input class="text" type="text" name="title" ng-model="song.title">
+    <button type="submit" ng-disabled="newSong.$invalid || newSong.$pristine || !song.title.length">Record</button>
+</form>
+<audio src=""></audio>
+<div class="message" ng-show="createdLink.url">
+  <div class="title">{{createdLink.title}}</div>
+  <div class="original">{{createdLink.url}}</div>
+  <a href="{{createdLink.base_url}}/api/links/{{createdLink.code}}">{{createdLink.base_url}}/api/links/{{createdLink.code}}</a>
+</div>

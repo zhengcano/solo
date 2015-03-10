@@ -1,39 +1,66 @@
 angular.module('shortly.services', [])
 
-.factory('Links', function ($http) {
-  var links = {};
+.factory('Songs', function ($http) {
+  var songs = {};
 
-  var findLinks = function() {
+  var findSongs = function() {
     return $http({
       method: 'GET',
-      url: '/api/links'
+      url: '/api/songs'
     })
     .then(function(resp){
-      resp.data.forEach(function(link){
-        links[link.url] = link;
+      resp.data.forEach(function(song){
+        songs[song.title] = song;
       });
     });
   };
 
-  var getLinks = function(){
-    var linkList = [];
+  var getSongs = function(){
+    var songList = [];
 
-    angular.forEach(links, function(link){
-      linkList.push(link);
+    angular.forEach(songs, function(song){
+      songList.push(song);
     });
 
-    linkList.sort(function(a, b) {
-      return b.visits - a.visits;
-    });
-
-    return linkList;
+    return songList;
   };
 
-  var saveUrl = function(url){
+  var getTitles = function(){
+    var titleList = [];
+    angular.forEach(songs, function(song){
+      titleList.push(song.title)
+    });
+
+    return titleList;
+  }
+
+  var saveSong = function(song, title){
+    var blobToBase64 = function(blob, cb) {
+      var reader = new FileReader();
+      reader.onload = function() {
+        var dataUrl = reader.result;
+        var base64 = dataUrl.split(',')[1];
+        cb(base64);
+      };
+      reader.readAsDataURL(blob);
+    };
+
+    blobToBase64(song, function(base64){ // encode
+      var update = {'blob': base64, 'title': title};
+      $http.post('/api/songs/save', update)
+        .success(function(new_recording) {
+          console.log("success");
+        }
+      })
+    })  
+  }
+
+  var saveData = function(data){
+    
     return $http({
       method: 'POST',
-      url: '/api/links',
-      data: url
+      url: '/api/songs',
+      data: data
     })
     .then(function(resp){
       return resp.data;
@@ -42,8 +69,8 @@ angular.module('shortly.services', [])
 
 
   return {
-    findLinks: findLinks,
-    getLinks: getLinks,
+    findSongs: findSongs,
+    getSongs: getSongs,
     saveUrl: saveUrl
   };
 

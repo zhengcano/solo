@@ -1,11 +1,11 @@
 (function(angular){
 
   angular.module('shortly')
-    .directive('shortenedLink', function(Links){
+    .directive('shortenedLink', function(Songs){
       return {
         restrict: 'E',
         scope: true,
-        templateUrl: 'app/linktemplate.html'
+        templateUrl: 'app/songtemplate.html'
       };
     });
 
