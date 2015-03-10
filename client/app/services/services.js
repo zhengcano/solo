@@ -175,9 +175,9 @@ angular.module('soundwich.services', [])
     var audioContext = new AudioContext();
     navigator.getUserMedia({audio: true}, function success(stream){
       var input = audioContext.createMediaStreamSource(stream);
-      base.play();
       var rec = new Recorder(input);
       rec.record();
+      base.play();        
       setTimeout(function(){
         if (!ended){
           rec.stop();
@@ -198,7 +198,7 @@ angular.module('soundwich.services', [])
         url: '/api/songs/savelayer',
         data: update})
         .then(function(new_recording) {
-          $location.path('/layers');
+          $location.path('/songs');
         })
     });   
   }

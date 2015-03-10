@@ -8,18 +8,29 @@
     <li class="nav-list-item pull-right"><a href="#" ng-click="logout()" class="nav-link">Log Out</a></li>
   </ul>
 </div><!-- /.navigation -->
-<form ng-submit="findTrack()" novalidate class="newlink-form" name="getTrack">
+<div class="form-separator">
+	<form ng-submit="findTrack()" novalidate class="newlink-form" name="getTrack">
     <input class="text" type="text" name="title" ng-model="title">
     <button type="submit" ng-disabled="getTrack.$invalid || getTrack.$pristine || !title.length">Find Track</button>
-</form>
-<form ng-submit="recNewLayer()" novalidate class="newlink-form second-form" name="newLayer" ng-show="song">
-    <input class="text" type="text" name="layertitle" ng-model="layertitle">
-    <button type="submit" ng-disabled="newLayer.$invalid || newLayer.$pristine || !layertitle.length">Record</button>
-    <button type="button" ng-click="play()">Play</button>
-</form>
+	</form>
+	<form ng-submit="recNewLayer()" novalidate class="newlink-form second-form" name="newLayer" ng-show="song">
+	    <input class="text" type="text" name="layertitle" ng-model="layertitle">
+	    <button type="submit" ng-disabled="newLayer.$invalid || newLayer.$pristine || !layertitle.length">Record</button>
+	    <button type="button" ng-click="play()">Play</button>
+	</form>
+</div>
 <audio class="mastertrack" id="master" ng-src="{{song.location}}"></audio>
-<div ng-repeat="layer in layers">
-	<audio class="track-layer" ng-src="{{layer.location}}"></audio>
+<ul class="daul">
+	<li>Layers to play: {{layerTitles}}</li>
+	<li ng-repeat="layer in layers" class="link-item fx-fade-down" ng-click="addToList(layer)">
+  <div class="link-img fa fa-music"></div>
+  <div class="info">
+    <h2 class="title">{{layer.title}}</h2>
+  </div>
+</li>
+</ul>
+<div>
+	<audio ng-src="{{layer.location}}" ng-repeat="layer in toPlay"></audio></div>
 </div>
 
 <div class="timer" ng-show"counter">{{counter}}</div>

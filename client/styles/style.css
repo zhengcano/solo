@@ -80,7 +80,7 @@ ul {
 }
 
 .search-box {
-  font-size: 0.8em;
+  font-size: 1em;
   width: auto;
   padding: 0.2em;
 }
@@ -157,7 +157,7 @@ ul {
 }
 
 .count-label {
-  font-size: 0.8em;
+  font-size: 1em;
   text-transform: uppercase;
   margin: 0;
 }
@@ -250,4 +250,12 @@ input.ng-valid.ng-dirty {
 
 .second-form {
   margin-left: 50px;
+}
+
+.song-layer {
+  clear: both;
+}
+
+.daul {
+  clear: both;
 }

@@ -4,6 +4,8 @@ angular.module('soundwich.layers', [])
   $scope.ended = false;
   $scope.song;
   $scope.layers = [];
+  $scope.toPlay = [];
+  $scope.layerTitles = [];
 
 	var getUser = function(){
 		Songs.getUser().then(function(){
@@ -21,9 +23,13 @@ angular.module('soundwich.layers', [])
     $scope.song = Songs.getTrack($scope.title);
     Songs.getLayers($scope.song.title, $scope.song.user).then(function(){
       $scope.layers = Songs.returnLayers();
-      console.log($scope.layers);
     });
   };
+
+  $scope.addToList = function(layer){
+    $scope.toPlay.push(layer);
+    $scope.layerTitles.push(layer.title);
+  }
 
   $scope.recNewLayer = function(){
     var base = document.getElementById('master');
@@ -36,10 +42,16 @@ angular.module('soundwich.layers', [])
   }
 
   $scope.play = function(){
-    console.log('hi');
     var audios = document.getElementsByTagName('audio');
     for (var i = 0; i < audios.length; i++){
-      audios[i].play();
+      if (i === 0){
+        temp = i;
+        setTimeout(function(){
+          audios[temp].play();
+        }, 200);
+      } else {
+        audios[i].play();        
+      }
     }
   }
 

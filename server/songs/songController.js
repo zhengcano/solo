@@ -37,6 +37,7 @@ module.exports = {
     findTrack({user: user, title: title})
       .then(function (song) {
         var layerList = song.layers;
+        console.log(layerList);
         var findAll = Q.nbind(Layers.find, Layers);
         findAll({'title':{$in: layerList}})
           .then(function (layers) {
